@@ -4,16 +4,25 @@
 <h1>Dog Details</h1>
 
 <div class="card">
-  <div class="card-content">
-    <span class="card-title">{{ dog.name }}</span>
-    <p>Breed: {{ dog.breed }}</p>
-    <p>Description: {{ dog.description|linebreaks }}</p>
-    {% if dog.age > 0 %}
-      <p>Age: {{ dog.age }}</p>
-    {% else %}
-      <p>Age: Puppies</p>
-    {% endif %}
-  </div>
+  <div class="row">
+    <div class="col s6">
+      <div class="card-content">
+        <span class="card-title">{{ dog.name }}</span>
+        <p>Breed: {{ dog.breed }}</p>
+        <p>Description: {{ dog.description|linebreaks }}</p>
+        {% if dog.age > 0 %}
+           <p>Age: {{ dog.age }}</p>
+        {% else %}
+           <p>Age: Puppies</p>
+        {% endif %}
+      </div>
+      <p>Age: Puppy</p> <!-- Move this line inside the div -->
+    </div>
+   <div class="card-action">
+    <a href="{% url 'dogs_update' dog.id %}">Edit</a>
+    <a href="{% url 'dogs_delete' dog.id %}">Delete</a>
+   </div>
+ </div>
 </div>
 
 {% endblock %}

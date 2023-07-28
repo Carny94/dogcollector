@@ -1,4 +1,6 @@
 from django.db import models
+# Import the reverse function
+from django.urls import reverse
 
 # Create your models here.
 class Dog(models.Model):
