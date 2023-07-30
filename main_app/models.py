@@ -43,4 +43,5 @@ class Feeding(models.Model):
      # Nice method for obtaining the friendly value of a Field.choice
     return f"{self.get_meal_display()} on {self.date}"
 
-
+class Meta:
+    ordering = ['-date']

@@ -37,3 +37,14 @@ class DogUpdate(UpdateView):
 class DogDelete(DeleteView):
   model = Dog
   success_url = '/dogs'
+
+def add_feeding(request, cat_id):
+  form = FeedingForm(request.POST)
+   # validate the form
+  if form.is_valid():
+    # don't save the form to the db until it
+    # has the cat_id assigned
+    new_feeding = form.save(commit=False)
+    new_feeding.cat_id = cat_id
+    new_feeding.save()
+  return redirect('detail', cat_id=cat_id)
